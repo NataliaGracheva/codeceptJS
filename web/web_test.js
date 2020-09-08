@@ -1,3 +1,5 @@
+const assert = require('assert');
+
 Feature('Search web page');
 
 Scenario('Check page title', (I) => {
@@ -24,4 +26,16 @@ Scenario('Go to Testing', (I) => {
     I.scrollTo('a.nav__item[title="Тестирование"]');
     I.click('a.nav__item[title="Тестирование"]');
     I.see("Тестирование", 'h1');
+});
+
+Scenario('Test API status', async (I) => {
+    let response = await I.sendGetRequest("/todos/1");
+    // console.log(response.status);
+    assert.equal(response.status, 200);
+});
+
+Scenario('Test API response', async (I) => {
+    let response = await I.sendGetRequest("/todos/1");
+    // console.log(response.data.title);
+    assert.equal(response.data.title, 'delectus aut autem');
 });

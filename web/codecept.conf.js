@@ -11,6 +11,9 @@ exports.config = {
     Puppeteer: {
       url: "https://otus.ru",
       show: true,
+    },
+    REST: {
+      endpoint: "https://jsonplaceholder.typicode.com"
     }
   },
   include: {
